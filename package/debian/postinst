@@ -1,0 +1,33 @@
+#!/bin/sh
+set -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+case "$1" in
+    configure)
+
+        db_version 2.0
+        (
+            cd /var/www/env/amoveo-explorer
+
+            REREAD=`supervisorctl reread`
+            supervisorctl update
+
+            supervisorctl restart amoveo-explorer.api
+            supervisorctl restart amoveo-explorer.network
+
+        )
+        ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+
+db_stop
