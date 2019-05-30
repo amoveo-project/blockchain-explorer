@@ -12,6 +12,11 @@ $ pip install .   # install dependencies
 ```
 Next you need to configure parameters in `service/settings_local.py` looking on `settings.py`: `NODE_EXT_URL`, `NODE_INT_URL` and `DATABASE_URI` for db connection.
 
+Initial database schema is in `service/database.sql` file, it can be applied as:
+```
+$ psql -h localhost -U username dbname < service/database.sql`
+```
+
 Next you can run network listener and API in different shells:
 ```
 $ python -m service.core       # starting API service
