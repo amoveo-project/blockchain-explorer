@@ -9,7 +9,7 @@ setup(
     install_requires=[
         'asyncpg==0.18.1',
         'requests==2.20.0',
-        'aiohttp==3.4.4',
+        'aiohttp==3.7.4',
         'psycopg2-binary==2.7.5',
     ]
 )
